@@ -17,7 +17,7 @@ export const payload = {
   now_playing: {
     cover_url:
       "https://lh3.googleusercontent.com/D0Ov-18hSEVy5327rmqHfXS-4YDbM4xh6NSLuLGU295Mh2PGTFvKH-g0GllIYkMZsFHXPMeVx5oRHzM=w544-h544-l90-rj",
-    title: "Running Through The Nighttttt",
+    title: "Running Through The Night",
     artist: "Seori",
     album: "?depacse ohw",
     queue_by: "Phurichaya K.",

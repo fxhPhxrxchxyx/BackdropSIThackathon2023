@@ -2,6 +2,7 @@ import { Box, Card, CardMedia, Stack, Typography } from "@mui/material";
 import bg from "../assets/bg.png";
 import { payload } from "../utils/payload";
 const Backdrop = () => {
+  let quque = Boolean(payload.now_playing.queue_by);
   return (
     <Box>
       <Card>
@@ -210,8 +211,9 @@ const Backdrop = () => {
             <Typography variant="h6" color={"white"}>
               {payload.now_playing.artist}
             </Typography>
+
             <Typography variant="h6" color={"#D1D1D1"}>
-              queue by
+              {quque == true ? "quque by" : ""}
             </Typography>
             <Stack>
               <Typography
@@ -225,7 +227,7 @@ const Backdrop = () => {
                   whiteSpace: "nowrap",
                 }}
               >
-                {payload.now_playing.queue_by}
+                {quque == true ? `${payload.now_playing.queue_by}` : ""}
               </Typography>
             </Stack>
           </Stack>
