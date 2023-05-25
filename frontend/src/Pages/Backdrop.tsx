@@ -74,9 +74,84 @@ const Backdrop = () => {
         </Stack>
         <Stack>
           <div
-            style={{ width: "4px", height: "15px", backgroundColor: "white" }}
+            style={{
+              position: "absolute",
+              top: "30%",
+              left: "6%",
+              width: "6px",
+              height: "80px",
+              background: "white",
+              borderRadius: "10px",
+            }}
           ></div>
-          <Stack></Stack>
+          <Stack>
+            <Typography
+              sx={{
+                position: "absolute",
+                top: "30%",
+                left: "7%",
+              }}
+              variant="h4"
+              color={"white"}
+            >
+              {payload.current_event.title}
+            </Typography>
+            <Typography
+              sx={{ position: "absolute", top: "35%", left: "7%" }}
+              variant="h6"
+              color={"white"}
+            >
+              {payload.current_event.time}
+            </Typography>
+          </Stack>
+        </Stack>
+        <Stack>
+          <div
+            style={{
+              position: "absolute",
+              top: "40%",
+              left: "6%",
+              width: "6px",
+              height: "80px",
+              background: "white",
+              borderRadius: "10px",
+            }}
+          ></div>
+          <Stack>
+            <Typography
+              sx={{
+                position: "absolute",
+                top: "40%",
+                left: "7%",
+              }}
+              variant="body1"
+              color={"white"}
+            >
+              Up next
+            </Typography>
+            <Typography
+              sx={{
+                position: "absolute",
+                top: "43%",
+                left: "7%",
+              }}
+              variant="h6"
+              color={"white"}
+            >
+              {payload.next_event.title}
+            </Typography>
+            <Typography
+              sx={{
+                position: "absolute",
+                top: "46%",
+                left: "7%",
+              }}
+              variant="body1"
+              color={"white"}
+            >
+              {payload.next_event.time}
+            </Typography>
+          </Stack>
         </Stack>
       </Card>
     </Box>
