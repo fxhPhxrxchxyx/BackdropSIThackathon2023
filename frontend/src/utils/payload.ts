@@ -1,7 +1,10 @@
 export const payload = {
   time: "10:53",
   date: "Wed, May 24",
-  wheather: {
+  display: {
+    now_playing_mode: "dark",
+  },
+  weather: {
     icon: "http://www.gstatic.com/images/icons/material/apps/weather/2x/mostly_cloudy_night_dark_color_96dp.png",
     status: "Mostly Cloudy",
     temp: "55",

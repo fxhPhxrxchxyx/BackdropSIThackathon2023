@@ -3,7 +3,7 @@ import bg from "../assets/bg.png";
 import { payload } from "../utils/payload";
 import Marquee from "react-fast-marquee";
 const Backdrop = () => {
-  let quque = Boolean(payload.now_playing.queue_by);
+  let queue = Boolean(payload.now_playing.queue_by);
 
   return (
     <Box>
@@ -11,14 +11,22 @@ const Backdrop = () => {
         <CardMedia
           sx={{
             position: "relative",
-            width: "1440px",
-            height: "1080px",
+
+            width: "100%",
+            height: "100vh",
             backgroundImage: `url(${bg})`,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             filter: "blur(10px)",
           }}
         />
+        <div
+          style={{
+            background: "rgba(0, 0, 0, 0.25)",
+            position: "absolute",
+            inset: "0px",
+          }}
+        ></div>
         <Stack>
           <Typography
             sx={{
@@ -51,7 +59,7 @@ const Backdrop = () => {
           </Typography>
           <Stack>
             <img
-              src={payload.wheather.icon}
+              src={payload.weather.icon}
               style={{
                 position: "absolute",
                 top: "10%",
@@ -71,7 +79,7 @@ const Backdrop = () => {
               variant="h6"
               color="white"
             >
-              {payload.wheather.temp}° • {payload.wheather.status}
+              {payload.weather.temp}° • {payload.weather.status}
             </Typography>
           </Stack>
         </Stack>
@@ -158,26 +166,26 @@ const Backdrop = () => {
         </Stack>
         <Box
           sx={{
-            width: "386px",
-            height: "197px",
+            width: "500px",
+            height: "200px",
             position: "absolute",
-            bottom: "3%",
-            left: "71%",
-            background: "rgba(255, 255, 255, 0.25)",
+            bottom: "10px",
+            right: "30px",
+            background: "rgba(0, 0, 0, 0.25)",
             borderRadius: "10px",
+            display: "flex",
+            flexDirection: "column",
+            padding: "15px 20px",
           }}
         >
-          <Stack sx={{ position: "absolute", top: "5%", left: "5%" }}>
-            <Typography variant="h6" color={"white"}>
-              Now Playing
-            </Typography>
+          <Typography variant="h6" color={"white"} mb="10px">
+            Now Playing
+          </Typography>
+          <Stack direction="row" gap="30px">
             <Box
               sx={{
-                position: "absolute",
-                top: "110%",
                 width: "95px",
                 height: "95px",
-                left: "2%",
               }}
             >
               <img
@@ -189,52 +197,44 @@ const Backdrop = () => {
                 }}
               ></img>
             </Box>
-          </Stack>
-          <Stack
-            sx={{
-              position: "absolute",
-              top: "25%",
-              left: "35%",
-            }}
-          >
-            <Typography
-              variant="h5"
-              color={"white"}
-              sx={{
-                width: "260px",
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-                paddingRight: "10px",
-              }}
-            >
-              <Marquee>
-                {payload.now_playing.title}.
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              </Marquee>
-            </Typography>
-
-            <Typography variant="h6" color={"white"}>
-              {payload.now_playing.artist}
-            </Typography>
-
-            <Typography variant="h6" color={"#D1D1D1"}>
-              {quque == true ? "quque by" : ""}
-            </Typography>
-            <Stack>
+            <Stack direction="column">
               <Typography
-                variant="h6"
+                variant="h5"
                 color={"white"}
-                style={{
-                  position: "absolute",
-                  top: "67%",
-                  left: "35%",
-                  width: "3%",
+                sx={{
+                  width: "350px",
                   whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  paddingRight: "10px",
                 }}
               >
-                {quque == true ? `${payload.now_playing.queue_by}` : ""}
+                <Marquee>
+                  {payload.now_playing.title}.
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </Marquee>
               </Typography>
+
+              <Typography variant="h6" color={"white"}>
+                {payload.now_playing.artist}
+              </Typography>
+              <Stack direction="row" gap="10px">
+                <Typography variant="h6" color={"#D1D1D1"}>
+                  {queue == true ? "Queued by" : ""}
+                </Typography>
+
+                <Stack>
+                  <Typography
+                    variant="h6"
+                    color={"white"}
+                    style={{
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {queue == true ? `${payload.now_playing.queue_by}` : ""}
+                  </Typography>
+                </Stack>
+              </Stack>
             </Stack>
           </Stack>
         </Box>
