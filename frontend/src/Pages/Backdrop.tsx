@@ -8,7 +8,7 @@ const Backdrop = () => {
         <CardMedia
           sx={{
             position: "relative",
-            width: "1920px",
+            width: "1440px",
             height: "1080px",
             backgroundImage: `url(${bg})`,
             backgroundSize: "cover",
@@ -71,6 +71,12 @@ const Backdrop = () => {
               {payload.wheather.temp}° • {payload.wheather.status}
             </Typography>
           </Stack>
+        </Stack>
+        <Stack>
+          <div
+            style={{ width: "4px", height: "15px", backgroundColor: "white" }}
+          ></div>
+          <Stack></Stack>
         </Stack>
       </Card>
     </Box>
