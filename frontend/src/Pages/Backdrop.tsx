@@ -52,7 +52,7 @@ const Backdrop = () => {
               style={{
                 position: "absolute",
                 top: "10%",
-                left: "20%",
+                left: "23%",
                 width: "3%",
               }}
             ></img>
@@ -61,7 +61,7 @@ const Backdrop = () => {
                 position: "absolute",
                 top: "15%",
                 width: "100%",
-                left: "20%",
+                left: "23%",
                 fontFamily: "open sans",
                 textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
               }}
@@ -79,7 +79,7 @@ const Backdrop = () => {
               top: "30%",
               left: "6%",
               width: "6px",
-              height: "80px",
+              height: "85px",
               background: "white",
               borderRadius: "10px",
             }}
@@ -112,7 +112,7 @@ const Backdrop = () => {
               top: "40%",
               left: "6%",
               width: "6px",
-              height: "80px",
+              height: "90px",
               background: "white",
               borderRadius: "10px",
             }}
