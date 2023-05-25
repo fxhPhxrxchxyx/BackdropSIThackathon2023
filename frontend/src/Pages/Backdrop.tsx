@@ -153,6 +153,83 @@ const Backdrop = () => {
             </Typography>
           </Stack>
         </Stack>
+        <Box
+          sx={{
+            width: "386px",
+            height: "197px",
+            position: "absolute",
+            bottom: "3%",
+            left: "71%",
+            background: "rgba(255, 255, 255, 0.25)",
+            borderRadius: "10px",
+          }}
+        >
+          <Stack sx={{ position: "absolute", top: "5%", left: "5%" }}>
+            <Typography variant="h6" color={"white"}>
+              Now Playing
+            </Typography>
+            <Box
+              sx={{
+                position: "absolute",
+                top: "110%",
+                width: "95px",
+                height: "95px",
+                left: "2%",
+              }}
+            >
+              <img
+                src={payload.now_playing.cover_url}
+                style={{
+                  width: "100%",
+                  backgroundSize: "cover",
+                  borderRadius: "15px",
+                }}
+              ></img>
+            </Box>
+          </Stack>
+          <Stack
+            sx={{
+              position: "absolute",
+              top: "25%",
+              left: "35%",
+            }}
+          >
+            <Typography
+              variant="h5"
+              color={"white"}
+              sx={{
+                width: "260px",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                paddingRight: "10px",
+              }}
+            >
+              {payload.now_playing.title}
+            </Typography>
+            <Typography variant="h6" color={"white"}>
+              {payload.now_playing.artist}
+            </Typography>
+            <Typography variant="h6" color={"#D1D1D1"}>
+              queue by
+            </Typography>
+            <Stack>
+              <Typography
+                variant="h6"
+                color={"white"}
+                style={{
+                  position: "absolute",
+                  top: "67%",
+                  left: "35%",
+                  width: "3%",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {payload.now_playing.queue_by}
+              </Typography>
+            </Stack>
+          </Stack>
+        </Box>
       </Card>
     </Box>
   );
