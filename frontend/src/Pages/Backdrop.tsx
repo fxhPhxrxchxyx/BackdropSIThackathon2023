@@ -31,9 +31,9 @@ const Backdrop = () => {
           <Typography
             sx={{
               position: "absolute",
-              top: "8%",
+              top: "80px",
               width: "100%",
-              left: "5%",
+              left: "90px",
               fontFamily: "open sans",
               fontWeight: "bold",
               textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
@@ -46,9 +46,9 @@ const Backdrop = () => {
           <Typography
             sx={{
               position: "absolute",
-              top: "20%",
+              top: "200px",
               width: "100%",
-              left: "6%",
+              left: "105px",
               fontFamily: "open sans",
               textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
             }}
@@ -62,17 +62,17 @@ const Backdrop = () => {
               src={payload.weather.icon}
               style={{
                 position: "absolute",
-                top: "10%",
-                left: "23%",
+                top: "100px",
+                left: "350px",
                 width: "3%",
               }}
             ></img>
             <Typography
               sx={{
                 position: "absolute",
-                top: "15%",
+                top: "150px",
                 width: "100%",
-                left: "23%",
+                left: "350px",
                 fontFamily: "open sans",
                 textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
               }}
@@ -87,8 +87,8 @@ const Backdrop = () => {
           <div
             style={{
               position: "absolute",
-              top: "30%",
-              left: "6%",
+              top: "300px",
+              left: "108px",
               width: "6px",
               height: "85px",
               background: "white",
@@ -99,8 +99,8 @@ const Backdrop = () => {
             <Typography
               sx={{
                 position: "absolute",
-                top: "30%",
-                left: "7%",
+                top: "300px",
+                left: "130px",
               }}
               variant="h4"
               color={"white"}
@@ -108,7 +108,7 @@ const Backdrop = () => {
               {payload.current_event.title}
             </Typography>
             <Typography
-              sx={{ position: "absolute", top: "35%", left: "7%" }}
+              sx={{ position: "absolute", top: "350px", left: "130px" }}
               variant="h6"
               color={"white"}
             >
@@ -120,8 +120,8 @@ const Backdrop = () => {
           <div
             style={{
               position: "absolute",
-              top: "40%",
-              left: "6%",
+              top: "410px",
+              left: "108px",
               width: "6px",
               height: "90px",
               background: "white",
@@ -132,8 +132,8 @@ const Backdrop = () => {
             <Typography
               sx={{
                 position: "absolute",
-                top: "40%",
-                left: "7%",
+                top: "420px",
+                left: "130px",
               }}
               variant="body1"
               color={"white"}
@@ -143,8 +143,8 @@ const Backdrop = () => {
             <Typography
               sx={{
                 position: "absolute",
-                top: "43%",
-                left: "7%",
+                top: "440px",
+                left: "130px",
               }}
               variant="h6"
               color={"white"}
@@ -154,8 +154,8 @@ const Backdrop = () => {
             <Typography
               sx={{
                 position: "absolute",
-                top: "46%",
-                left: "7%",
+                top: "470px",
+                left: "130px",
               }}
               variant="body1"
               color={"white"}
@@ -210,7 +210,7 @@ const Backdrop = () => {
                 }}
               >
                 <Marquee>
-                  {payload.now_playing.title}.
+                  {payload.now_playing.title}
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </Marquee>
               </Typography>
