@@ -1,8 +1,10 @@
 import { Box, Card, CardMedia, Stack, Typography } from "@mui/material";
 import bg from "../assets/bg.png";
 import { payload } from "../utils/payload";
+import Marquee from "react-fast-marquee";
 const Backdrop = () => {
   let quque = Boolean(payload.now_playing.queue_by);
+
   return (
     <Box>
       <Card>
@@ -206,8 +208,12 @@ const Backdrop = () => {
                 paddingRight: "10px",
               }}
             >
-              {payload.now_playing.title}
+              <Marquee>
+                {payload.now_playing.title}.
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </Marquee>
             </Typography>
+
             <Typography variant="h6" color={"white"}>
               {payload.now_playing.artist}
             </Typography>
