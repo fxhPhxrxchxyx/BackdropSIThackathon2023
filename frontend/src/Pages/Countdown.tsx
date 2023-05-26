@@ -61,7 +61,7 @@ const Countdown = () => {
             <Time text={minute} unit="Minutes" />
             <Time text={second} unit="Seconds" />
           </Stack>
-          <Stack direction={"row"} alignItems={"center"} >
+          <Stack direction={"row"} alignItems={"center"}>
             <Avatar
               alt="SIT Hackathon logo"
               src={logo}
