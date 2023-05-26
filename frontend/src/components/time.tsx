@@ -10,7 +10,7 @@ const Time: FC<{
   return (
     <Stack justifyContent={"center"} alignItems={"center"}>
       <Typography
-        sx={{ fontSize: "15rem", color: "white", fontWeight: "bold" }}
+        sx={{ fontSize: "15rem", color: "white", fontWeight: "bold", zIndex:"100" }}
       >
         {checkText?.length == 1 ? "0" + text : text}
         {unit != "Seconds" ? ":" : ""}
@@ -22,6 +22,7 @@ const Time: FC<{
           position: "relative",
           top: "-5rem",
           left: "-1em",
+          zIndex:"100"
         }}
       >
         {unit}

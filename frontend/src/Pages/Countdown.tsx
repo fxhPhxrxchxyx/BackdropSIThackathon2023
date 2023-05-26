@@ -1,19 +1,21 @@
 import { Avatar, Box, Container, Stack, Typography } from "@mui/material";
-import bg from "../assets/bg-countdown.jpg";
+import bg2 from "../assets/bg-countdown.jpg";
+import bg from "../assets/bg.png";
 import Time from "../components/time";
 import { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
+import axios from "axios";
 
 const Countdown = () => {
   const [hour, setHour] = useState<number>(0);
   const [minute, setMinute] = useState<number>(0);
   const [second, setSecond] = useState<number>(0);
+  const [bg, setBg] = useState<string>("https://api.cshack.site/api/image/rand");
   function countdown() {
     let current = new Date();
     let deadline = new Date("2023-05-28T13:30:00");
 
     let totalSeconds = (deadline.getTime() - current.getTime()) / 1000;
-
     let timer = setInterval(() => {
       let remainingHours = Math.floor(totalSeconds / 3600);
       let remainingMinutes = Math.floor((totalSeconds % 3600) / 60);
@@ -30,9 +32,17 @@ const Countdown = () => {
       totalSeconds--;
     }, 1000);
   }
+  const fetchImage = () => {
+    setInterval(() => {
+      setBg("https://api.cshack.site/api/image/rand?salt=" + Math.random());
+      console.log(111);
+    }, 10000);
+  };
+
   useEffect(() => {
     countdown();
-  });
+    fetchImage();
+  }, []);
 
   return (
     <Box
@@ -42,6 +52,16 @@ const Countdown = () => {
         backgroundImage: `url(${bg})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
+        "&::after": {
+          content: '""',
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundColor: "rgba(0, 0, 0, 0.5)", // Adjust the color and opacity as needed
+          zIndex: "1",
+        },
       }}
     >
       <Container sx={{ height: "100%" }}>
@@ -51,7 +71,12 @@ const Countdown = () => {
           sx={{ height: "100%" }}
         >
           <Typography
-            sx={{ color: "white", position: "relative", top: "3rem" }}
+            sx={{
+              color: "white",
+              position: "relative",
+              top: "3rem",
+              zIndex: "100",
+            }}
             variant="h4"
           >
             Hackathon Period Remaining
@@ -65,9 +90,9 @@ const Countdown = () => {
             <Avatar
               alt="SIT Hackathon logo"
               src={logo}
-              sx={{ width: 150, height: 150 }}
+              sx={{ width: 150, height: 150, zIndex: "100" }}
             />
-            <Typography sx={{ color: "white" }} variant="h5">
+            <Typography sx={{ color: "white", zIndex: "100" }} variant="h5">
               SIT Hackathon 2023
             </Typography>
           </Stack>
