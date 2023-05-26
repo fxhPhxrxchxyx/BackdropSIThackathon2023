@@ -5,9 +5,15 @@ import Marquee from "react-fast-marquee";
 import logo from "../assets/1.png";
 import light1 from "../assets/light1.png";
 import light2 from "../assets/light2.png";
+import useWebSocket from "react-use-websocket";
 const Backdrop = () => {
   let queue = Boolean(payload.now_playing.queue_by);
-
+  const ws = "wss://api.cshack.site/ws/backdrop";
+  useWebSocket(ws, {
+    onOpen: () => {
+      console.log("WebSocket connection established.");
+    },
+  });
   return (
     <Box>
       <Card>
