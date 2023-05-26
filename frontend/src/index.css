@@ -6,3 +6,17 @@
   box-sizing: border-box;
   border: "none";
 }
+
+.lightMove {
+  animation-name: lightMove;
+  animation: lightMove 5s infinite;
+}
+
+@keyframes lightMove {
+  from {
+    transform: scale(0.8);
+  }
+  to {
+    transform: scale(1);
+  }
+}

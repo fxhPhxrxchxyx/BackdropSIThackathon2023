@@ -2,7 +2,9 @@ import { Box, Card, CardMedia, Stack, Typography } from "@mui/material";
 import bg from "../assets/bg.png";
 import { payload } from "../utils/payload";
 import Marquee from "react-fast-marquee";
-import logo from "../assets/logo.png";
+import logo from "../assets/1.png";
+import light1 from "../assets/light1.png";
+import light2 from "../assets/light2.png";
 const Backdrop = () => {
   let queue = Boolean(payload.now_playing.queue_by);
 
@@ -163,14 +165,35 @@ const Backdrop = () => {
             >
               {payload.next_event.time}
             </Typography>
-
+            <img
+              style={{
+                position: "absolute",
+                top: "605px",
+                left: "100px",
+                width: "85px",
+                height: "85px",
+              }}
+              className="lightMove"
+              src={light2}
+            ></img>
+            <img
+              style={{
+                position: "absolute",
+                top: "620px",
+                left: "115px",
+                width: "60px",
+                height: "60px",
+              }}
+              className="lightMove"
+              src={light1}
+            ></img>
             <img
               style={{
                 position: "absolute",
                 top: "520px",
-                left: "70px",
-                width: "250px",
-                height: "250px",
+                left: "140px",
+                width: "150px",
+                height: "150px",
               }}
               src={logo}
             ></img>
