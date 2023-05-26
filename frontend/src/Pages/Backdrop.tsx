@@ -2,6 +2,7 @@ import { Box, Card, CardMedia, Stack, Typography } from "@mui/material";
 import bg from "../assets/bg.png";
 import { payload } from "../utils/payload";
 import Marquee from "react-fast-marquee";
+import logo from "../assets/logo.png";
 const Backdrop = () => {
   let queue = Boolean(payload.now_playing.queue_by);
 
@@ -162,6 +163,17 @@ const Backdrop = () => {
             >
               {payload.next_event.time}
             </Typography>
+
+            <img
+              style={{
+                position: "absolute",
+                top: "520px",
+                left: "70px",
+                width: "250px",
+                height: "250px",
+              }}
+              src={logo}
+            ></img>
           </Stack>
         </Stack>
         <Box
