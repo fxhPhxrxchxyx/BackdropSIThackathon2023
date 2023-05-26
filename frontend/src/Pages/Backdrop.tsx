@@ -6,8 +6,22 @@ import logo from "../assets/1.png";
 import light1 from "../assets/light1.png";
 import light2 from "../assets/light2.png";
 import useWebSocket from "react-use-websocket";
+import { useEffect, useState } from "react";
 const Backdrop = () => {
   let queue = Boolean(payload.now_playing.queue_by);
+  const [bg, setBg] = useState<string>(
+    "https://api.cshack.site/api/image/rand"
+  );
+  const fetchImage = () => {
+    setInterval(() => {
+      setBg("https://api.cshack.site/api/image/rand?salt=" + Math.random());
+      console.log(111);
+    }, 10000);
+  };
+
+  useEffect(() => {
+    fetchImage();
+  }, []);
   const ws = "wss://api.cshack.site/ws/backdrop";
   useWebSocket(ws, {
     onOpen: () => {

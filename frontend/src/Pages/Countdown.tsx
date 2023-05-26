@@ -10,7 +10,9 @@ const Countdown = () => {
   const [hour, setHour] = useState<number>(0);
   const [minute, setMinute] = useState<number>(0);
   const [second, setSecond] = useState<number>(0);
-  const [bg, setBg] = useState<string>("https://api.cshack.site/api/image/rand");
+  const [bg, setBg] = useState<string>(
+    "https://api.cshack.site/api/image/rand"
+  );
   function countdown() {
     let current = new Date();
     let deadline = new Date("2023-05-28T13:30:00");
