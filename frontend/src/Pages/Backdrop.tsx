@@ -6,8 +6,22 @@ import logo from "../assets/1.png";
 import light1 from "../assets/light1.png";
 import light2 from "../assets/light2.png";
 import useWebSocket from "react-use-websocket";
+import { useEffect, useState } from "react";
 const Backdrop = () => {
   let queue = Boolean(payload.now_playing.queue_by);
+  const [bg, setBg] = useState<string>(
+    "https://api.cshack.site/api/image/rand"
+  );
+  const fetchImage = () => {
+    setInterval(() => {
+      setBg("https://api.cshack.site/api/image/rand?salt=" + Math.random());
+      console.log(111);
+    }, 10000);
+  };
+
+  useEffect(() => {
+    fetchImage();
+  }, []);
   const ws = "wss://api.cshack.site/ws/backdrop";
   useWebSocket(ws, {
     onOpen: () => {
@@ -40,14 +54,14 @@ const Backdrop = () => {
           <Typography
             sx={{
               position: "absolute",
-              top: "80px",
+              top: "50px",
               width: "100%",
               left: "90px",
               fontFamily: "open sans",
               fontWeight: "bold",
               textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+              fontSize: "150px",
             }}
-            variant="h1"
             color="white"
           >
             {payload.time}
@@ -55,13 +69,13 @@ const Backdrop = () => {
           <Typography
             sx={{
               position: "absolute",
-              top: "200px",
+              top: "230px",
               width: "100%",
-              left: "105px",
+              left: "130px",
               fontFamily: "open sans",
               textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
             }}
-            variant="h4"
+            variant="h3"
             color="white"
           >
             {payload.date}
@@ -72,20 +86,20 @@ const Backdrop = () => {
               style={{
                 position: "absolute",
                 top: "100px",
-                left: "350px",
-                width: "3%",
+                left: "520px",
+                width: "5%",
               }}
             ></img>
             <Typography
               sx={{
                 position: "absolute",
-                top: "150px",
+                top: "180px",
                 width: "100%",
-                left: "350px",
+                left: "520px",
                 fontFamily: "open sans",
                 textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
               }}
-              variant="h6"
+              variant="h4"
               color="white"
             >
               {payload.weather.temp}° • {payload.weather.status}
@@ -96,10 +110,10 @@ const Backdrop = () => {
           <div
             style={{
               position: "absolute",
-              top: "300px",
+              top: "340px",
               left: "108px",
               width: "6px",
-              height: "85px",
+              height: "105px",
               background: "white",
               borderRadius: "10px",
             }}
@@ -108,17 +122,17 @@ const Backdrop = () => {
             <Typography
               sx={{
                 position: "absolute",
-                top: "300px",
+                top: "340px",
                 left: "130px",
               }}
-              variant="h4"
+              variant="h3"
               color={"white"}
             >
               {payload.current_event.title}
             </Typography>
             <Typography
-              sx={{ position: "absolute", top: "350px", left: "130px" }}
-              variant="h6"
+              sx={{ position: "absolute", top: "400px", left: "130px" }}
+              variant="h4"
               color={"white"}
             >
               {payload.current_event.time}
@@ -129,10 +143,10 @@ const Backdrop = () => {
           <div
             style={{
               position: "absolute",
-              top: "410px",
+              top: "480px",
               left: "108px",
               width: "6px",
-              height: "90px",
+              height: "105px",
               background: "white",
               borderRadius: "10px",
             }}
@@ -141,10 +155,10 @@ const Backdrop = () => {
             <Typography
               sx={{
                 position: "absolute",
-                top: "420px",
+                top: "480px",
                 left: "130px",
               }}
-              variant="body1"
+              variant="h5"
               color={"white"}
             >
               Up next
@@ -152,10 +166,10 @@ const Backdrop = () => {
             <Typography
               sx={{
                 position: "absolute",
-                top: "440px",
+                top: "520px",
                 left: "130px",
               }}
-              variant="h6"
+              variant="h5"
               color={"white"}
             >
               {payload.next_event.title}
@@ -163,10 +177,10 @@ const Backdrop = () => {
             <Typography
               sx={{
                 position: "absolute",
-                top: "470px",
+                top: "550px",
                 left: "130px",
               }}
-              variant="body1"
+              variant="h6"
               color={"white"}
             >
               {payload.next_event.time}
@@ -174,7 +188,7 @@ const Backdrop = () => {
             <img
               style={{
                 position: "absolute",
-                top: "605px",
+                top: "705px",
                 left: "100px",
                 width: "85px",
                 height: "85px",
@@ -185,7 +199,7 @@ const Backdrop = () => {
             <img
               style={{
                 position: "absolute",
-                top: "620px",
+                top: "720px",
                 left: "115px",
                 width: "60px",
                 height: "60px",
@@ -196,7 +210,7 @@ const Backdrop = () => {
             <img
               style={{
                 position: "absolute",
-                top: "520px",
+                top: "620px",
                 left: "140px",
                 width: "150px",
                 height: "150px",
@@ -210,8 +224,8 @@ const Backdrop = () => {
             width: "500px",
             height: "200px",
             position: "absolute",
-            bottom: "10px",
-            right: "30px",
+            bottom: "80px",
+            right: "90px",
             background: "rgba(0, 0, 0, 0.25)",
             borderRadius: "10px",
             display: "flex",
@@ -219,7 +233,7 @@ const Backdrop = () => {
             padding: "15px 20px",
           }}
         >
-          <Typography variant="h6" color={"white"} mb="10px">
+          <Typography variant="h5" color={"white"} mb="10px">
             Now Playing
           </Typography>
           <Stack direction="row" gap="30px">
