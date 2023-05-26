@@ -1,47 +1,57 @@
 import { Avatar, Box, Container, Stack, Typography } from "@mui/material";
-import bg2 from "../assets/bg-countdown.jpg";
-import bg from "../assets/bg.png";
 import Time from "../components/time";
 import { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
-import axios from "axios";
+
+interface Time {
+  hour: number;
+  minute: number;
+  second: number;
+}
 
 const Countdown = () => {
-  const [hour, setHour] = useState<number>(0);
-  const [minute, setMinute] = useState<number>(0);
-  const [second, setSecond] = useState<number>(0);
-  const [bg, setBg] = useState<string>("https://api.cshack.site/api/image/rand");
-  function countdown() {
-    let current = new Date();
-    let deadline = new Date("2023-05-28T13:30:00");
+  const [bg, setBg] = useState<string>(
+    "https://api.cshack.site/api/image/rand"
+  );
+  const [remainingTime, setRemainingTime] = useState<Time>({
+    hour: 0,
+    minute: 0,
+    second: 0,
+  });
 
-    let totalSeconds = (deadline.getTime() - current.getTime()) / 1000;
-    let timer = setInterval(() => {
-      let remainingHours = Math.floor(totalSeconds / 3600);
-      let remainingMinutes = Math.floor((totalSeconds % 3600) / 60);
-      let remainingSeconds = Math.floor(totalSeconds % 60);
-      setHour(remainingHours);
-      setMinute(remainingMinutes);
-      setSecond(remainingSeconds);
+  const initializeCountdownTimer = () => {
+    const currentTimestamp = new Date().getTime();
+    const deadlineTimestamp = new Date("2023-05-28T13:30:00").getTime();
+    let remainingTimeInSecond = Math.floor(
+      (deadlineTimestamp - currentTimestamp) / 1000
+    );
+    const timer = setInterval(() => {
+      setRemainingTime({
+        hour: Math.floor(remainingTimeInSecond / 3600),
+        minute: Math.floor((remainingTimeInSecond % 3600) / 60),
+        second: remainingTimeInSecond % 60,
+      });
 
-      if (totalSeconds <= 0) {
+      if (remainingTimeInSecond <= 0) {
         clearInterval(timer);
         console.log("Countdown complete!");
       }
-
-      totalSeconds--;
+      remainingTimeInSecond -= 1;
     }, 1000);
-  }
+    return timer;
+  };
   const fetchImage = () => {
+    console.log(111);
+    
     setInterval(() => {
       setBg("https://api.cshack.site/api/image/rand?salt=" + Math.random());
-      console.log(111);
     }, 10000);
   };
 
   useEffect(() => {
-    countdown();
     fetchImage();
+    const timer = initializeCountdownTimer();
+    return () => clearInterval(timer);
   }, []);
 
   return (
@@ -82,9 +92,9 @@ const Countdown = () => {
             Hackathon Period Remaining
           </Typography>
           <Stack direction={"row"}>
-            <Time text={hour} unit="Hours" />
-            <Time text={minute} unit="Minutes" />
-            <Time text={second} unit="Seconds" />
+            <Time text={remainingTime.hour} unit="Hours" />
+            <Time text={remainingTime.minute} unit="Minutes" />
+            <Time text={remainingTime.second} unit="Seconds" />
           </Stack>
           <Stack direction={"row"} alignItems={"center"}>
             <Avatar
