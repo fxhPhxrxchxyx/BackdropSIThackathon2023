@@ -1,22 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Open+Sans:wght@400;600&display=swap");
 
+body {
+	overflow: hidden;
+}
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  border: "none";
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: "none";
 }
 
 .lightMove {
-  animation-name: lightMove;
-  animation: lightMove 5s infinite;
+	animation-name: lightMove;
+	animation: lightMove 5s infinite;
 }
 
 @keyframes lightMove {
-  from {
-    transform: scale(0.8);
-  }
-  to {
-    transform: scale(1);
-  }
+	from {
+		transform: scale(0.8);
+	}
+	to {
+		transform: scale(1);
+	}
 }
