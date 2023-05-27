@@ -4,6 +4,7 @@ import Marquee from "react-fast-marquee";
 import logo from "../assets/1.png";
 import light1 from "../assets/light1.png";
 import light2 from "../assets/light2.png";
+import qr from "../assets/linktree.png";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -222,9 +223,9 @@ const Backdrop = () => {
             ></img>
           </Stack>
         </Stack>
-        <Box sx={{ position: "absolute", bottom: 270, right: 170 }}>
+        <Box sx={{ position: "absolute", bottom: 320, right: 170 }}>
           <Typography sx={{ color: "white", fontSize: 20, opacity: 1 }}>
-            <span style={{ opacity: 0.7 }}>You can request music at</span>{" "}
+            {/* <span style={{ opacity: 0.7 }}>You can request music at</span>{" "}
             <span
               style={{
                 paddingBottom: "5px",
@@ -232,7 +233,16 @@ const Backdrop = () => {
               }}
             >
               music.cshack.site
-            </span>
+            </span> */}
+            <Box sx={{ textAlign: "center" }}>
+              <Box sx={{fontSize:"32px"}}>CS hackratron Service</Box>
+              <Box sx={{backgroundColor:"white",padding:"10px 0px"}}>
+                <img
+                  src={qr}
+                  style={{ height: "300px", background: "color" }}
+                ></img>
+              </Box>
+            </Box>
           </Typography>
         </Box>
         <Box
