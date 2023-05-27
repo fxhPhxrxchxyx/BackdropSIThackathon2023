@@ -191,8 +191,8 @@ const Backdrop = () => {
             <img
               style={{
                 position: "absolute",
-                top: "705px",
-                left: "100px",
+                top: "665px",
+                left: "122px",
                 width: "85px",
                 height: "85px",
               }}
@@ -202,8 +202,8 @@ const Backdrop = () => {
             <img
               style={{
                 position: "absolute",
-                top: "720px",
-                left: "115px",
+                top: "680px",
+                left: "135px",
                 width: "60px",
                 height: "60px",
               }}
