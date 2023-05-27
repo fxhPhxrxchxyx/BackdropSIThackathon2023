@@ -219,6 +219,18 @@ const Backdrop = () => {
             ></img>
           </Stack>
         </Stack>
+        <Typography
+          sx={{
+            position: "absolute",
+            top: "580px",
+            left: "1020px",
+          }}
+          variant="h5"
+          color={"white"}
+        >
+          You can queue songs via{" "}
+          <p style={{ display: "inline" }}>music.cshack.site</p>
+        </Typography>
         <Box
           sx={{
             width: "500px",
