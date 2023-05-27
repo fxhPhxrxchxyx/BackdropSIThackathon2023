@@ -40,7 +40,7 @@ const Backdrop = () => {
             backgroundImage: `url(${bg})`,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
-            filter: "blur(10px)",
+            filter: "blur(4px)",
           }}
         />
         <div
@@ -229,7 +229,14 @@ const Backdrop = () => {
           color={"white"}
         >
           You can queue songs via{" "}
-          <p style={{ display: "inline" }}>music.cshack.site</p>
+          <p
+            style={{
+              display: "inline",
+              borderBottom: "2px solid #f04f7f",
+            }}
+          >
+            music.cshack.site
+          </p>
         </Typography>
         <Box
           sx={{
