@@ -1,5 +1,4 @@
 import { Box, Card, CardMedia, Stack, Typography } from "@mui/material";
-import { payload } from "../utils/payload";
 import Marquee from "react-fast-marquee";
 import logo from "../assets/1.png";
 import light1 from "../assets/light1.png";
@@ -8,15 +7,39 @@ import qr from "../assets/linktree.png";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+interface IState{
+	time: string;
+	whether: {
+		icon: string;
+		temp: number;
+		status: string;
+	};
+	date: string;
+	current_event: {
+		title: string;
+		time: string;
+	}
+	next_event: {
+		title: string;
+		time: string;
+	};
+	now_playing:{
+		title: string;
+		artist: string;
+		cover_url: string;
+		queue_by: string;
+	}
+}
+
 const Backdrop = () => {
-	let queue = Boolean(payload.now_playing.queue_by);
-	const [state, setState] = useState<string>({});
+	// let queue = Boolean(payload.now_playing.queue_by);
+	const [state, setState] = useState<IState | null>(null);
 	const [bg, setBg] = useState<string>(
-		"https://api.cshack.site/api/image/rand"
+		"https://cdn.cshack24.thistine.com/rand"
 	);
 	const fetchImage = () => {
 		setInterval(() => {
-			setBg("https://api.cshack.site/api/image/rand?salt=" + Math.random());
+			setBg("https://cdn.cshack24.thistine.com/rand?salt=" + Math.random());
 			console.log(111);
 		}, 10000);
 	};
@@ -68,7 +91,7 @@ const Backdrop = () => {
 						}}
 						color="white"
 					>
-						{state.time}
+						{state?.time}
 					</Typography>
 					<Typography
 						sx={{
@@ -82,11 +105,11 @@ const Backdrop = () => {
 						variant="h3"
 						color="white"
 					>
-						{state.date}
+						{state?.date}
 					</Typography>
 					<Stack>
 						<img
-							src={state.whether?.icon}
+							src={state?.whether?.icon}
 							style={{
 								position: "absolute",
 								top: "120px",
@@ -105,7 +128,7 @@ const Backdrop = () => {
 							variant="h4"
 							color="white"
 						>
-							{state.whether?.temp}° • {state.whether?.status}
+							{state?.whether?.temp}° • {state?.whether?.status}
 						</Typography>
 					</Stack>
 				</Stack>
@@ -131,14 +154,14 @@ const Backdrop = () => {
 							variant="h3"
 							color={"white"}
 						>
-							{state.current_event?.title}
+							{state?.current_event?.title}
 						</Typography>
 						<Typography
 							sx={{ position: "absolute", top: "400px", left: "130px" }}
 							variant="h4"
 							color={"white"}
 						>
-							{state.current_event?.time}
+							{state?.current_event?.time}
 						</Typography>
 					</Stack>
 				</Stack>
@@ -176,7 +199,7 @@ const Backdrop = () => {
 							variant="h5"
 							color={"white"}
 						>
-							{state.next_event?.title}
+							{state?.next_event?.title}
 						</Typography>
 						<Typography
 							sx={{
@@ -187,7 +210,7 @@ const Backdrop = () => {
 							variant="h6"
 							color={"white"}
 						>
-							{state.next_event?.time}
+							{state?.next_event?.time}
 						</Typography>
 						<img
 							style={{
@@ -270,7 +293,7 @@ const Backdrop = () => {
 							}}
 						>
 							<img
-								src={state.now_playing?.cover_url}
+								src={state?.now_playing?.cover_url}
 								style={{
 									width: "100%",
 									backgroundSize: "cover",
@@ -290,22 +313,22 @@ const Backdrop = () => {
 									paddingRight: "10px",
 								}}
 							>
-								{state.now_playing?.title.length > 20 ? (
+								{(state?.now_playing?.title ||"").length > 20 ? (
 									<Marquee>
-										{state.now_playing?.title}
+										{state?.now_playing?.title}
 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									</Marquee>
 								) : (
-									state.now_playing?.title
+									state?.now_playing?.title
 								)}
 							</Typography>
 
 							<Typography variant="h6" color={"white"}>
-								{state.now_playing?.artist}
+								{state?.now_playing?.artist}
 							</Typography>
 							<Stack direction="row" gap="10px">
 								<Typography variant="h6" color={"#D1D1D1"}>
-									{state.now_playing?.queue_by ? "Queued by" : "From Radio"}
+									{state?.now_playing?.queue_by ? "Queued by" : "From Radio"}
 								</Typography>
 								<Stack>
 									<Typography
@@ -315,9 +338,9 @@ const Backdrop = () => {
 											whiteSpace: "nowrap",
 										}}
 									>
-										{state.now_playing?.queue_by
-											? `${state.now_playing?.queue_by.substring(0, 20)}${
-													state.now_playing?.queue_by.length > 20 ? "..." : ""
+										{state?.now_playing?.queue_by
+											? `${state?.now_playing?.queue_by.substring(0, 20)}${
+													state?.now_playing?.queue_by.length > 20 ? "..." : ""
 											  }`
 											: ""}
 									</Typography>
