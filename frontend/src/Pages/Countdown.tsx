@@ -3,6 +3,8 @@ import Time from "../components/time";
 import {useEffect, useMemo, useState} from "react";
 import logo from "../assets/1.png";
 import fire from "../assets/fire.gif"
+import axios from "axios";
+import {Buffer} from "buffer";
 
 interface Time {
 	hour: number;
@@ -50,11 +52,14 @@ const Countdown = () => {
 		return timer;
 	};
 	const fetchImage = () => {
-		console.log(111);
-
 		setInterval(() => {
-			console.log(bg);
-			setBg("https://cdn.cshack24.thistine.com/rand?s="+Date.now());
+			axios.get("https://cdn.cshack24.thistine.com/rand?salt=" + Math.random(), {
+				responseType:"arraybuffer"
+			}).then((res)=> {
+				setBg("data:image/png;base64,"+Buffer.from(res.data, "binary").toString("base64"))
+			})
+			// setBg("https://cdn.cshack24.thistine.com/rand?salt=" + Math.random());
+			console.log(111);
 		}, 10000);
 	};
 

@@ -1,9 +1,10 @@
 import { Box, Card, CardMedia, Stack, Typography } from "@mui/material";
+import {Buffer} from 'buffer';
 import Marquee from "react-fast-marquee";
 import logo from "../assets/1.png";
 import light1 from "../assets/light1.png";
 import light2 from "../assets/light2.png";
-import qr from "../assets/linktree.png";
+// import qr from "../assets/linktree.png";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -39,18 +40,23 @@ const Backdrop = () => {
 	);
 	const fetchImage = () => {
 		setInterval(() => {
-			setBg("https://cdn.cshack24.thistine.com/rand?salt=" + Math.random());
+			axios.get("https://cdn.cshack24.thistine.com/rand?salt=" + Math.random(), {
+				responseType:"arraybuffer"
+			}).then((res)=> {
+				setBg("data:image/png;base64,"+Buffer.from(res.data, "binary").toString("base64"))
+			})
+			// setBg("https://cdn.cshack24.thistine.com/rand?salt=" + Math.random());
 			console.log(111);
 		}, 10000);
 	};
 
 	useEffect(() => {
 		fetchImage();
-		axios.get("https://api.cshack.site/api/backdrop/state").then((res) => {
+		axios.get("https://musicapi.cshack24.thistine.com/api/backdrop/state").then((res) => {
 			setState(res.data.data);
 		});
 		setInterval(() => {
-			axios.get("https://api.cshack.site/api/backdrop/state").then((res) => {
+			axios.get("https://musicapi.cshack24.thistine.com/api/backdrop/state").then((res) => {
 				setState(res.data.data);
 			});
 		}, 5000);
@@ -261,7 +267,7 @@ const Backdrop = () => {
 							<Box sx={{ fontSize: "32px" }}>CS hackratron Service</Box>
 							<Box sx={{ backgroundColor: "white", padding: "10px 0px" }}>
 								<img
-									src={qr}
+									src={"https://utils.thistine.com/api/qr/v1/make?text=https%3A%2F%2Flinktr.ee%2Fthistine&size=300&disableBorder=true"}
 									style={{ height: "300px", background: "color" }}
 								></img>
 							</Box>
