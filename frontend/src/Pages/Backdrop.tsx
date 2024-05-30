@@ -52,11 +52,11 @@ const Backdrop = () => {
 
 	useEffect(() => {
 		fetchImage();
-		axios.get("https://musicapi.cshack24.thistine.com/api/backdrop/state").then((res) => {
+		axios.get("https://music.cshack24.thistine.com/api/backdrop/state").then((res) => {
 			setState(res.data.data);
 		});
 		setInterval(() => {
-			axios.get("https://musicapi.cshack24.thistine.com/api/backdrop/state").then((res) => {
+			axios.get("https://music.cshack24.thistine.com/api/backdrop/state").then((res) => {
 				setState(res.data.data);
 			});
 		}, 5000);
