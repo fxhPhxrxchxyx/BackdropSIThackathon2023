@@ -1,7 +1,8 @@
-import { Avatar, Box, Container, Stack, Typography } from "@mui/material";
+import { Box, Container, Stack, Typography } from "@mui/material";
 import Time from "../components/time";
-import { useEffect, useState } from "react";
-import logo from "../assets/logo.png";
+import {useEffect, useMemo, useState} from "react";
+import logo from "../assets/1.png";
+import fire from "../assets/fire.gif"
 
 interface Time {
 	hour: number;
@@ -9,9 +10,11 @@ interface Time {
 	second: number;
 }
 
+const timeMax = 72 * 60 * 60;
+
 const Countdown = () => {
 	const [bg, setBg] = useState<string>(
-		"https://api.cshack.site/api/image/rand"
+		"https://cdn.cshack24.thistine.com/rand"
 	);
 	const [remainingTime, setRemainingTime] = useState<Time>({
 		hour: 0,
@@ -19,9 +22,15 @@ const Countdown = () => {
 		second: 0,
 	});
 
+	const seconds = useMemo(()=> (remainingTime.hour * 60 *60) + (remainingTime.minute*60) + remainingTime.second,
+		[remainingTime.hour, remainingTime.minute, remainingTime.second])
+
+	const percent = useMemo(()=> seconds >timeMax ? 1 :  1 - (timeMax-seconds)/timeMax, [seconds])
+
+
 	const initializeCountdownTimer = () => {
 		const currentTimestamp = new Date().getTime();
-		const deadlineTimestamp = new Date("2023-05-28T13:30:00").getTime();
+		const deadlineTimestamp = new Date("2024-06-02T15:00:00").getTime();
 		let remainingTimeInSecond = Math.floor(
 			(deadlineTimestamp - currentTimestamp) / 1000
 		);
@@ -44,7 +53,8 @@ const Countdown = () => {
 		console.log(111);
 
 		setInterval(() => {
-			setBg("https://api.cshack.site/api/image/rand?salt=" + Math.random());
+			console.log(bg);
+			setBg("https://cdn.cshack24.thistine.com/rand?s="+Date.now());
 		}, 10000);
 	};
 
@@ -59,6 +69,7 @@ const Countdown = () => {
 			sx={{
 				width: "100vw",
 				height: "100vh",
+				backgroundColor:"black",
 				backgroundImage: `url(${bg})`,
 				backgroundRepeat: "no-repeat",
 				backgroundSize: "cover",
@@ -96,12 +107,23 @@ const Countdown = () => {
 						<Time text={remainingTime.minute} unit="Minutes" />
 						<Time text={remainingTime.second} unit="Seconds" />
 					</Stack>
-					<Stack direction={"row"} alignItems={"center"}>
-						<Avatar
-							alt="SIT Hackathon logo"
-							src={logo}
-							sx={{ width: 150, height: 150, zIndex: "100" }}
-						/>
+					<Stack direction={"row"} alignItems={"center"} gap={5}>
+						{/*<Avatar*/}
+						{/*	alt="SIT Hackathon logo"*/}
+						{/*	src={logo}*/}
+						{/*	sx={{ width: 150, height: 150, zIndex: "100" }}*/}
+						{/*/>*/}
+						<Box position={"relative"} >
+							<img src={fire} alt="fire" width={150} style={{position:"absolute",
+								mixBlendMode:"screen",
+								left:-110,
+								transform: `translate(-50%,0) scale(${percent > 0.5 ? percent : 0.5})`,
+								top:-30,
+								opacity: percent,
+								transition: "transform 0.5s, opacity 0.5s",
+								rotate: "-90deg"}} />
+							<img src={logo} alt="SIT Hackathon logo" width={150} />
+						</Box>
 						<Typography sx={{ color: "white", zIndex: "100" }} variant="h5">
 							SIT Hackathon 2023
 						</Typography>
