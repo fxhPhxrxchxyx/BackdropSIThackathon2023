@@ -38,6 +38,23 @@ const Backdrop = () => {
 	const [bg, setBg] = useState<string>(
 		"https://cdn.cshack24.thistine.com/rand"
 	);
+	const [time, setTime] = useState<{mintues:string, hours:string}>({
+		mintues: new Date().getMinutes().toString(),
+		hours: new Date().getHours().toString()
+	});
+
+	useEffect(() => {
+		const timer = setInterval(() => {
+			setTime({
+				mintues: new Date().getMinutes().toString(),
+				hours: new Date().getHours().toString()
+			});
+		}, 1000);
+		return () => {
+			clearInterval(timer);
+		};
+	}, []);
+
 	const fetchImage = () => {
 		setInterval(() => {
 			axios.get("https://cdn.cshack24.thistine.com/rand?salt=" + Math.random(), {
@@ -97,7 +114,7 @@ const Backdrop = () => {
 						}}
 						color="white"
 					>
-						{state?.time}
+						{time.hours}:{time.mintues}
 					</Typography>
 					<Typography
 						sx={{
