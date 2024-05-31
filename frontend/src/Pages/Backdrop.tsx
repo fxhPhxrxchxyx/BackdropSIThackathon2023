@@ -39,15 +39,15 @@ const Backdrop = () => {
 		"https://cdn.cshack24.thistine.com/rand"
 	);
 	const [time, setTime] = useState<{mintues:string, hours:string}>({
-		mintues: new Date().getMinutes().toString(),
-		hours: new Date().getHours().toString()
+		mintues: new Date().getMinutes().toFixed(2).toString(),
+		hours: new Date().getHours().toFixed(2).toString()
 	});
 
 	useEffect(() => {
 		const timer = setInterval(() => {
 			setTime({
-				mintues: new Date().getMinutes().toString(),
-				hours: new Date().getHours().toString()
+				mintues: new Date().getMinutes().toFixed(2).toString(),
+				hours: new Date().getHours().toFixed(2).toString()
 			});
 		}, 1000);
 		return () => {
