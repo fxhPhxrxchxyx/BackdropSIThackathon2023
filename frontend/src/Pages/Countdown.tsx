@@ -32,7 +32,7 @@ const Countdown = () => {
 
 	const initializeCountdownTimer = () => {
 		const currentTimestamp = new Date().getTime();
-		const deadlineTimestamp = new Date("2024-06-02T15:00:00").getTime();
+		const deadlineTimestamp = new Date("2024-06-02T13:30:00").getTime();
 		let remainingTimeInSecond = Math.floor(
 			(deadlineTimestamp - currentTimestamp) / 1000
 		);
