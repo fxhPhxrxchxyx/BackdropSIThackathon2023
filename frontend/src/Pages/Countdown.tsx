@@ -12,7 +12,7 @@ interface Time {
 	second: number;
 }
 
-const timeMax = 72 * 60 * 60;
+const timeMax = 29 * 60 * 60;
 
 const Countdown = () => {
 	const [bg, setBg] = useState<string>(
@@ -90,6 +90,13 @@ const Countdown = () => {
 				},
 			}}
 		>
+			<Box sx={{ backgroundColor: "white", padding: "10px 10px", position:"fixed", bottom:10,right:10,display:"flex", justifyContent:"center",alignItems:"center", gap:2, flexDirection:"column"}}>
+				<Typography>Hackathon Services</Typography>
+				<img
+					src={"https://utils.thistine.com/api/qr/v1/make?text=https%3A%2F%2Flinktr.ee%2Fthistine&size=300&disableBorder=true"}
+					style={{ height: "120px",width:"120px", background: "color" }}
+				></img>
+			</Box>
 			<Container sx={{ height: "100%" }}>
 				<Stack
 					justifyContent="center"
