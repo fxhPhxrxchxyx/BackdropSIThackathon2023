@@ -125,8 +125,11 @@ const Countdown = () => {
 						{/*	src={logo}*/}
 						{/*	sx={{ width: 150, height: 150, zIndex: "100" }}*/}
 						{/*/>*/}
-						<Box position={"relative"} >
+						<Box position={"relative"}
+							 className="rotate"
+						>
 							<img src={fire} alt="fire" width={150} style={{position:"absolute",
+
 								mixBlendMode:"screen",
 								left:-110,
 								transform: `translate(-50%,0) scale(${percent > 0.5 ? percent : 0.5})`,

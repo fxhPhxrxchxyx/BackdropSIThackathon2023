@@ -24,3 +24,65 @@ body {
 		transform: scale(1);
 	}
 }
+
+.rotate {
+	animation: rotate-animation 2s linear infinite;
+	animation-duration: 1s;
+}
+
+.lightAnimation {
+	animation: light-animation 5s infinite;
+}
+
+@keyframes light-animation {
+	0%{
+		transform: rotate(0deg);
+		background: rgba(128, 0, 128, 0.4);
+	}
+	14%{
+		transform: rotate(45deg);
+		background: rgba(0, 0, 255, 0.4);
+	}
+
+	28%{
+		transform: rotate(90deg);
+		background: rgba(0, 255, 255, 0.4);
+	}
+
+	42%{
+		transform: rotate(135deg);
+		background: rgba(0, 128, 0, 0.4);
+	}
+
+	56%{
+		transform: rotate(180deg);
+		background: rgba(255, 255, 0, 0.4);
+	}
+
+	70%{
+		transform: rotate(225deg);
+		background: rgba(255, 165, 0, 0.4);
+	}
+
+	84%{
+		transform: rotate(270deg);
+		background: rgba(255, 0, 0, 0.4);
+	}
+
+	100%{
+		transform: rotate(315deg);
+		background: rgba(128, 0, 128, 0.4);
+	}
+}
+
+@keyframes rotate-animation {
+	0% {
+		transform: rotate(0deg);
+	}
+	50% {
+		transform: rotate(180deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
