@@ -137,7 +137,7 @@ const Countdown = () => {
 							<img src={logo} alt="SIT Hackathon logo" width={150} />
 						</Box>
 						<Typography sx={{ color: "white", zIndex: "100" }} variant="h5">
-							SIT Hackathon 2023
+							SIT Hackathon 2024
 						</Typography>
 					</Stack>
 				</Stack>
