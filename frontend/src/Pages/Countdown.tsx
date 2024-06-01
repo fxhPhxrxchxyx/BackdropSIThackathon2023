@@ -13,6 +13,7 @@ interface Time {
 }
 
 const timeMax = 29 * 60 * 60;
+const minHours = 3 * 60 * 60;
 
 const Countdown = () => {
 	const [bg, setBg] = useState<string>(
@@ -29,6 +30,7 @@ const Countdown = () => {
 
 	const percent = useMemo(()=> seconds >timeMax ? 1 :  1 - (timeMax-seconds)/timeMax, [seconds])
 
+	const isLight = useMemo(()=> seconds <= 0 ? false :  seconds < minHours, [seconds])
 
 	const initializeCountdownTimer = () => {
 		const currentTimestamp = new Date().getTime();
@@ -36,6 +38,7 @@ const Countdown = () => {
 		let remainingTimeInSecond = Math.floor(
 			(deadlineTimestamp - currentTimestamp) / 1000
 		);
+		if(remainingTimeInSecond < 0) return ;
 		const timer = setInterval(() => {
 			setRemainingTime({
 				hour: Math.floor(remainingTimeInSecond / 3600),
@@ -114,10 +117,10 @@ const Countdown = () => {
 					>
 						Hackathon Period Remaining
 					</Typography>
-					<Stack direction={"row"}>
-						<Time text={remainingTime.hour} unit="Hours" />
-						<Time text={remainingTime.minute} unit="Minutes" />
-						<Time text={remainingTime.second} unit="Seconds" />
+					<Stack direction={"row"} >
+						<Time text={remainingTime.hour} unit="Hours" isLight={isLight} />
+						<Time text={remainingTime.minute} unit="Minutes" isLight={isLight} />
+						<Time text={remainingTime.second} unit="Seconds" isLight={isLight} />
 					</Stack>
 					<Stack direction={"row"} alignItems={"center"} gap={5}>
 						{/*<Avatar*/}
@@ -125,9 +128,7 @@ const Countdown = () => {
 						{/*	src={logo}*/}
 						{/*	sx={{ width: 150, height: 150, zIndex: "100" }}*/}
 						{/*/>*/}
-						<Box position={"relative"}
-							 className="rotate"
-						>
+						<Box position={"relative"} className={isLight ?"rotate":""} sx={{rotate: seconds === 0 ?"0deg": "180deg"}}>
 							<img src={fire} alt="fire" width={150} style={{position:"absolute",
 
 								mixBlendMode:"screen",

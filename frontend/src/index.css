@@ -34,6 +34,22 @@ body {
 	animation: light-animation 5s infinite;
 }
 
+.lightPlause {
+	animation: light-plause 1s infinite;
+}
+
+@keyframes light-plause {
+	0%{
+		color: red;
+	}
+	50%{
+		color: blue;
+	}
+	100%{
+		color: white;
+	}
+}
+
 @keyframes light-animation {
 	0%{
 		transform: rotate(0deg);
